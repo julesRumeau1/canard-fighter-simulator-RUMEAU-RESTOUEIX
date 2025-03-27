@@ -3,12 +3,12 @@ package org.example.canard;
 public class Canard {
     private String nom;
     private TypeCanard type;
-    private int pointsDeVie;
-    private int pointsAttaque;
+    private double pointsDeVie;
+    private double pointsAttaque;
 
     //TODO capacités spéciales
 
-    public Canard(String nom, TypeCanard type, int pointsDeVie, int pointsAttaque) {
+    public Canard(String nom, TypeCanard type, double pointsDeVie, double pointsAttaque) {
         this.nom = nom;
         this.type = type;
         this.pointsDeVie = pointsDeVie;
@@ -16,11 +16,12 @@ public class Canard {
     }
 
     public void attaquer(Canard autreCanard) {
-        // TODO inflige des dégâts en fonction du type.
-        //— subirDegats(int degats) : réduit les PV du canard.
+        double multiplicateur = TypeCanard.getMultiplicateurr(this.type, autreCanard.type);
+        double degat = this.pointsAttaque * multiplicateur;
+        autreCanard.subirDegats(degat);
     }
 
-    public void subirDegats(int degats) {
+    public void subirDegats(double degats) {
         this.pointsDeVie -= degats;
     }
 
@@ -36,11 +37,11 @@ public class Canard {
         return type;
     }
 
-    public int getPointsDeVie() {
+    public double getPointsDeVie() {
         return pointsDeVie;
     }
 
-    public int getPointsAttaque() {
+    public double getPointsAttaque() {
         return pointsAttaque;
     }
 
