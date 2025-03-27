@@ -7,11 +7,13 @@ public class CanardVent extends Canard{
     }
 
     @Override
-    public void activerCapaciteSpeciale(){
+    public void activerCapaciteSpeciale(Canard cible){
         capaciteSpecialeGlace();
     }
 
     private void capaciteSpecialeGlace() {
+        this.statut = Statut.BOOST_ATTAQUE;
+        this.capaciteSpecial = false;
         // TODO augmente temporairement sa vitesse d’attaque (2x attaque,
         // 3x attaque, etc.).
     }
