@@ -7,13 +7,14 @@ public class CanardFeu extends Canard{
     }
 
     @Override
-    public void activerCapaciteSpeciale(){
+    public void activerCapaciteSpeciale(Canard cible){
         capaciteSpecialeFeu();
     }
 
     private void capaciteSpecialeFeu() {
-        // inflige des dégats supplémentaires pendant un tour
-        // TODO
+        // fera en sorte de doublé les dégats lors de la prochaine attaque
+        this.statut = Statut.AUGMENTATION_DEGATS;
+        this.capaciteSpecial = false;
     }
 
 }

@@ -1,23 +1,28 @@
 package org.example.canard;
 
 public class Canard {
+    public Statut statut;
     private String nom;
     private TypeCanard type;
     private double pointsDeVie;
     private double pointsAttaque;
+    public boolean capaciteSpecial;
 
-    //TODO capacités spéciales
 
     public Canard(String nom, TypeCanard type, double pointsDeVie, double pointsAttaque) {
         this.nom = nom;
         this.type = type;
         this.pointsDeVie = pointsDeVie;
         this.pointsAttaque = pointsAttaque;
+        this.capaciteSpecial = true;
+        this.statut = Statut.NORMAL;
     }
 
     public void attaquer(Canard autreCanard) {
         double multiplicateur = TypeCanard.getMultiplicateur(this.type, autreCanard.type);
-        double degat = this.pointsAttaque * multiplicateur;
+        double degatSupCapacite = (statut == Statut.AUGMENTATION_DEGATS) ? this.pointsAttaque * 2 : this.pointsAttaque;
+        double degat = degatSupCapacite * multiplicateur;
+        System.out.println(autreCanard.getNom() + " subit " + degat + " degats ");
         autreCanard.subirDegats(degat);
     }
 
@@ -49,7 +54,14 @@ public class Canard {
         this.pointsDeVie = pointsDeVie;
     }
 
-    public void activerCapaciteSpeciale(){
+    public boolean estGele() {
+        return this.statut == Statut.GEL;
     }
 
+    public void activerCapaciteSpeciale(Canard cible){
+    }
+
+    public boolean getCapaciteSpecial() {
+        return capaciteSpecial;
+    }
 }

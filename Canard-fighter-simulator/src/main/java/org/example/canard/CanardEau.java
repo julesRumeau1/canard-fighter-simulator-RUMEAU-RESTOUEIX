@@ -7,11 +7,12 @@ public class CanardEau extends Canard {
     }
 
     @Override
-    public void activerCapaciteSpeciale(){
+    public void activerCapaciteSpeciale(Canard cible){
         capaciteSpecialeEau();
     }
     private void capaciteSpecialeEau() {
         // régénère 20 pv
         this.setPointsDeVie(this.getPointsDeVie() + 20);
+        this.capaciteSpecial = false;
     }
 }

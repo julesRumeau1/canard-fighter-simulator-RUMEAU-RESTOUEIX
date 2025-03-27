@@ -7,11 +7,13 @@ public class CanardGlace extends Canard {
     }
 
     @Override
-    public void activerCapaciteSpeciale(){
-        capaciteSpecialeGlace();
+    public void activerCapaciteSpeciale(Canard cible){
+        capaciteSpecialeGlace(cible);
     }
-    private void capaciteSpecialeGlace() {
-        // TODO gèle un adversaire, lui faisant perdre un tour
+    private void capaciteSpecialeGlace(Canard cible) {
+        // a gelé l'adversaire
+        cible.statut = Statut.GEL;
+        this.capaciteSpecial = false;
     }
 
 }
