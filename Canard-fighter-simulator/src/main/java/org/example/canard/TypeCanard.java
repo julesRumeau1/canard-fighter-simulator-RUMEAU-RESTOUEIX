@@ -2,7 +2,7 @@ package org.example.canard;
 
 public enum TypeCanard {
     Eau, Feu, Glace, Vent;
-    public static double getMultiplicateurr(TypeCanard attaquant, TypeCanard cible) {
+    public static double getMultiplicateur(TypeCanard attaquant, TypeCanard cible) {
 
         final double fort = 1.5;
         final double faible = 0.5;
