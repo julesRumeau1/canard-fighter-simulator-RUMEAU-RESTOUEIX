@@ -45,8 +45,11 @@ public class Canard {
         return pointsAttaque;
     }
 
+    public void setPointsDeVie(double pointsDeVie) {
+        this.pointsDeVie = pointsDeVie;
+    }
+
     public void activerCapaciteSpeciale(){
-        // TODO UTILISER SETTER CANARD CAPACITE SPECIALE
     }
 
 }

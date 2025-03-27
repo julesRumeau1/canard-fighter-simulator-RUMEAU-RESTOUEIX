@@ -8,5 +8,12 @@ public class CanardVent extends Canard{
 
     @Override
     public void activerCapaciteSpeciale(){
+        capaciteSpecialeGlace();
     }
+
+    private void capaciteSpecialeGlace() {
+        // TODO augmente temporairement sa vitesse d’attaque (2x attaque,
+        // 3x attaque, etc.).
+    }
+
 }
