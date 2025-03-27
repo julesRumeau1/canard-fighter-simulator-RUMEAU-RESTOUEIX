@@ -8,5 +8,12 @@ public class CanardFeu extends Canard{
 
     @Override
     public void activerCapaciteSpeciale(){
+        capaciteSpecialeFeu();
     }
+
+    private void capaciteSpecialeFeu() {
+        // inflige des dégats supplémentaires pendant un tour
+        // TODO
+    }
+
 }
