@@ -16,7 +16,7 @@ public class Canard {
     }
 
     public void attaquer(Canard autreCanard) {
-        double multiplicateur = TypeCanard.getMultiplicateurr(this.type, autreCanard.type);
+        double multiplicateur = TypeCanard.getMultiplicateur(this.type, autreCanard.type);
         double degat = this.pointsAttaque * multiplicateur;
         autreCanard.subirDegats(degat);
     }
