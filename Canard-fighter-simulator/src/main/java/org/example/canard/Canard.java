@@ -43,4 +43,9 @@ public class Canard {
     public int getPointsAttaque() {
         return pointsAttaque;
     }
+
+    public void activerCapaciteSpeciale(){
+        // TODO UTILISER SETTER CANARD CAPACITE SPECIALE
+    }
+
 }
