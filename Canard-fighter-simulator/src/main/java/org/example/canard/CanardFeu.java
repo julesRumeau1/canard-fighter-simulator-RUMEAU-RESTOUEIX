@@ -1,20 +1,10 @@
 package org.example.canard;
 
+import org.example.capaciteSpeciale.CapaciteFlamme;
+
 public class CanardFeu extends Canard{
 
     public CanardFeu(String nom, TypeCanard type, double pointsDeVie, double pointsAttaque) {
-        super(nom, type, pointsDeVie, pointsAttaque);
+        super(nom, type, pointsDeVie, pointsAttaque, new CapaciteFlamme());
     }
-
-    @Override
-    public void activerCapaciteSpeciale(Canard cible){
-        capaciteSpecialeFeu();
-    }
-
-    private void capaciteSpecialeFeu() {
-        // fera en sorte de doublé les dégats lors de la prochaine attaque
-        this.statut = Statut.AUGMENTATION_DEGATS;
-        this.capaciteSpecial = false;
-    }
-
 }
