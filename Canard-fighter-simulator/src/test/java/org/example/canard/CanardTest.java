@@ -12,10 +12,10 @@ class CanardTest {
 
     @BeforeEach
     void setUp() {
-        canardEau = new Canard("AquaDuck", TypeCanard.Eau, 100, 20);
-        canardFeu = new Canard("FlameDuck", TypeCanard.Feu, 100, 20);
-        canardGlace = new Canard("IceDuck", TypeCanard.Glace, 100, 20);
-        canardVent = new Canard("WindDuck", TypeCanard.Vent, 100, 20);
+        canardEau = new CanardFeu("AquaDuck", TypeCanard.Eau, 100, 20);
+        canardFeu = new CanardFeu("FlameDuck", TypeCanard.Feu, 100, 20);
+        canardGlace = new CanardFeu("IceDuck", TypeCanard.Glace, 100, 20);
+        canardVent = new CanardFeu("WindDuck", TypeCanard.Vent, 100, 20);
     }
 
     @Test
@@ -38,7 +38,7 @@ class CanardTest {
 
     @Test
     void testCanardDevientKO() {
-        Canard canardFaible = new Canard("WeakDuck", TypeCanard.Feu, 10, 20);
+        Canard canardFaible = new CanardFeu("WeakDuck", TypeCanard.Feu, 10, 20);
         canardEau.attaquer(canardFaible);  // Eau > Feu, 30 dégâts
         assertTrue(canardFaible.estKO());
     }

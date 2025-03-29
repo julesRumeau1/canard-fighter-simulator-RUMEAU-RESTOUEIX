@@ -21,7 +21,7 @@ public class Tour {
     public void executer() {
         System.out.println("\n" + attaquant.getNom() + " attaque " + defenseur.getNom());
 
-        if (attaquant.getCapaciteSpecial()) {
+        if (attaquant.getCapaciteSpecialDisponible()) {
             System.out.println("Voulez-vous utiliser une capacité spéciale ? (oui/non)");
             String reponse = scanner.nextLine().toLowerCase();
             if (reponse.equals("oui")) {
