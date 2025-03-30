@@ -1,7 +1,10 @@
 package org.example.canard;
 
-import org.example.capaciteSpeciale.CapaciteRegeneration;
-import org.example.capaciteSpeciale.CapaciteSpeciale;
+import org.example.capaciteSpeciale.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public abstract class Canard {
     public Statut statut;
@@ -10,16 +13,16 @@ public abstract class Canard {
     private double pointsDeVie;
     private double pointsAttaque;
     public boolean capaciteSpecialDisponible;
-    private CapaciteSpeciale capaciteSpeciale;
+    private List<CapaciteSpeciale> capacitesSpeciales;
 
-    public Canard(String nom, TypeCanard type, double pointsDeVie, double pointsAttaque, CapaciteSpeciale capaciteSpeciale) {
+    public Canard(String nom, TypeCanard type, double pointsDeVie, double pointsAttaque) {
         this.nom = nom;
         this.type = type;
         this.pointsDeVie = pointsDeVie;
         this.pointsAttaque = pointsAttaque;
         this.capaciteSpecialDisponible = true;
         this.statut = Statut.NORMAL;
-        this.capaciteSpeciale = capaciteSpeciale;
+        this.capacitesSpeciales = new ArrayList<>();
     }
 
     public void attaquer(Canard autreCanard) {
@@ -28,6 +31,10 @@ public abstract class Canard {
         double degat = degatSupCapacite * multiplicateur;
         System.out.println(autreCanard.getNom() + " subit " + degat + " degats ");
         autreCanard.subirDegats(degat);
+    }
+
+    public void ajouterCapaciteSpeciale(CapaciteSpeciale capacite) {
+        this.capacitesSpeciales.add(capacite);
     }
 
     public void subirDegats(double degats) {
@@ -71,7 +78,8 @@ public abstract class Canard {
         System.out.println(this.nom +'('+this.type+')'+ " utilise sa capacité spéciale" );
     }
     */
-    public void activerCapaciteSpeciale(Canard cible) {
+    public void activerCapaciteSpeciale(Canard cible, int index) {
+        CapaciteSpeciale capaciteSpeciale= this.getCapaciteSpeciale(index);
         if (capaciteSpeciale != null && capaciteSpecialDisponible) {
             capaciteSpeciale.activer(this, cible);
         } else {
@@ -82,11 +90,50 @@ public abstract class Canard {
     public boolean getCapaciteSpecialDisponible() {
         return capaciteSpecialDisponible;
     }
+    public List<CapaciteSpeciale> getCapacitesSpeciales() {
+        return capacitesSpeciales;
+    }
+    public CapaciteSpeciale getCapaciteSpeciale(int index) {
+        return capacitesSpeciales.get(index);
+    }
+
+    public void genererBonus() {
+        Random random = new Random();
+        int bonus = random.nextInt(3) + 1;
+
+        if (bonus == 1) { // ajout pv
+            this.pointsDeVie += 10;
+            System.out.println(getNom() + " a gagné 10 point de vie !");
+        } else if (bonus == 2) { // ajout pa
+            this.pointsAttaque += 10;
+            System.out.println(getNom() + " a gagné 10 point d'attaque !");
+        }
+        else if (bonus == 3) { // ajout capacite spéciale
+            int indexCapacite = random.nextInt(4) + 1;
+
+            //TODO pas ouf du tout il faudrait faire une capaciteFactory
+            if (indexCapacite == 1) {
+                this.ajouterCapaciteSpeciale(new CapaciteFlamme());
+                System.out.println(getNom() + " a gagné la capacité flamme !");
+            } else if (indexCapacite == 2) {
+                this.ajouterCapaciteSpeciale(new CapaciteGel());
+                System.out.println(getNom() + " a gagné la capacité gel !");
+            } else if (indexCapacite == 3) {
+                this.ajouterCapaciteSpeciale(new CapaciteRafale());
+                System.out.println(getNom() + " a gagné la capacité rafale !");
+            } else {
+                this.ajouterCapaciteSpeciale(new CapaciteRegeneration());
+                System.out.println(getNom() + " a gagné la capacité régénération !");
+            }
+
+        }
+
+    }
+
 
     public void setCapaciteSpecialDisponible(boolean capaciteSpecialDisponible) {
         this.capaciteSpecialDisponible = capaciteSpecialDisponible;
     }
 
-    public void setCapaciteSpecial(boolean capaciteSpecial) { this.capaciteSpecialDisponible = capaciteSpecial; }
 
 }

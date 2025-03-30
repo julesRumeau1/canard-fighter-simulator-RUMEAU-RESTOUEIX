@@ -7,6 +7,9 @@ public class CapaciteRegeneration implements CapaciteSpeciale {
     public void activer(Canard utilisateur, Canard cible) {
         System.out.println(utilisateur.getNom() + " utilise Régénération et récupère 20 PV !");
         utilisateur.setPointsDeVie(utilisateur.getPointsDeVie() + 20);
-        utilisateur.setCapaciteSpecial(false);
+        utilisateur.setCapaciteSpecialDisponible(false);
+    }
+    public String getLibelle() {
+        return "Régénération";
     }
 }

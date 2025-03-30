@@ -33,7 +33,8 @@ public class Combat {
     public void demarrer() {
         System.out.println("Début du combat entre " + canard1.getNom() + " et " + canard2.getNom() + "!");
 
-
+        double pvCanard1 = canard1.getPointsDeVie();
+        double pvCanard2 = canard2.getPointsDeVie();
         while (!canard1.estKO() && !canard2.estKO()) {
 
 
@@ -44,11 +45,21 @@ public class Combat {
             System.out.println(canard2.getNom() + " : " + canard2.getPointsDeVie() + "\n");
         }
 
+        // fin du combat on restaure les pv
+        canard1.setPointsDeVie(pvCanard1);
+        canard2.setPointsDeVie(pvCanard2);
+        canard1.setCapaciteSpecialDisponible(true);
+        canard2.setCapaciteSpecialDisponible(true);
+
         if (canard1.estKO()) {
             System.out.println(canard1.getNom() + " est K.O ! " + canard2.getNom() + " gagne !");
+            canard2.genererBonus();
         } else {
             System.out.println(canard2.getNom() + " est K.O ! " + canard1.getNom() + " gagne !");
+            canard1.genererBonus();
         }
+
+
     }
 
 
