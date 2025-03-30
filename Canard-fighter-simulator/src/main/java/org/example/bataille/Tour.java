@@ -19,11 +19,12 @@ public class Tour {
         this.scanner = scanner;
     }
 
-    public void executer() {
+    public void executer(Joueur joueur) {
+
         System.out.println("\n" + attaquant.getNom() + " attaque " + defenseur.getNom());
 
         if (attaquant.getCapaciteSpecialDisponible()) {
-            System.out.println("Voulez-vous utiliser une capacité spéciale ? (oui/non)");
+            System.out.println(joueur.getNom() + " : voulez-vous utiliser une capacité spéciale ? (oui/non)");
             String reponse = scanner.nextLine().toLowerCase();
             if (reponse.equals("oui")) {
 
