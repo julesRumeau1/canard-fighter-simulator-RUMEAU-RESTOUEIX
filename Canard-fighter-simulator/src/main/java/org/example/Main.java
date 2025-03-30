@@ -11,11 +11,35 @@ import java.util.Scanner;
 
 public class Main {
 
+    /**
+     * Points de vie par défaut pour un canard.
+     */
     private final static int PV_DEFAUT = 100;
+
+    /**
+     * Points d'attaque par défaut pour un canard.
+     */
     private final static int POINTS_ATTAQUE_DEFAUT = 10;
+
+    /**
+     * Points de vie maximum pour un canard.
+     */
     private final static int PV_MAX = 200;
+
+    /**
+     * Points d'attaque maximum pour un canard.
+     */
     private final static int POINTS_ATTAQUE_MAX = 20;
 
+    /**
+     * Crée un canard en fonction du type, nom, points de vie et points d'attaque.
+     *
+     * @param nom Le nom du canard.
+     * @param type Le type du canard (1: Eau, 2: Feu, 3: Glace, 4: Vent).
+     * @param pv Les points de vie du canard.
+     * @param pa Les points d'attaque du canard.
+     * @return Le canard créé.
+     */
     public static Canard creerCanard(String nom, int type, int pv, int pa) {
 
         if (pv > PV_MAX) {
@@ -35,14 +59,14 @@ public class Main {
                 CanardEau canardEau = new CanardEau(nom, TypeCanard.values()[type - 1], pv, pa);
                 return canardEau;
             case 2:
-                CanardFeu CanardFeu = new CanardFeu(nom, TypeCanard.values()[type - 1], pv, pa);
-                return CanardFeu;
+                CanardFeu canardFeu = new CanardFeu(nom, TypeCanard.values()[type - 1], pv, pa);
+                return canardFeu;
             case 3:
-                CanardGlace CanardGlace = new CanardGlace(nom, TypeCanard.values()[type - 1], pv, pa);
-                return CanardGlace;
+                CanardGlace canardGlace = new CanardGlace(nom, TypeCanard.values()[type - 1], pv, pa);
+                return canardGlace;
             case 4:
-                CanardVent CanardVent = new CanardVent(nom, TypeCanard.values()[type - 1], pv, pa);
-                return CanardVent;
+                CanardVent canardVent = new CanardVent(nom, TypeCanard.values()[type - 1], pv, pa);
+                return canardVent;
             default:
                 System.out.println("Création impossible");
         }
@@ -63,7 +87,7 @@ public class Main {
             System.out.println("4. Quitter");
             System.out.print("Votre choix : ");
             int choix = scanner.nextInt();
-            scanner.nextLine(); // Consommer la ligne
+            scanner.nextLine();
 
             switch (choix) {
                 case 1:
