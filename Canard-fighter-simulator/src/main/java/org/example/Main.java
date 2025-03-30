@@ -9,23 +9,23 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static int pvDefaut = 100;
-    private static int attaqueDefaut = 10;
-    private static int pvMax = 200;
-    private static int pointAttaqueMax = 20;
+    private final static int PV_DEFAUT = 100;
+    private final static int POINTS_ATTAQUE_DEFAUT = 10;
+    private final static int PV_MAX = 200;
+    private final static int POINTS_ATTAQUE_MAX = 20;
 
     public static Canard creerCanard(String nom, int type, int pv, int pa) {
 
-        if (pv > pvMax) {
-            pv = pvMax;
+        if (pv > PV_MAX) {
+            pv = PV_MAX;
         } else if (pv <= 0) {
-            pv = pvDefaut;
+            pv = PV_DEFAUT;
         }
 
-        if (pa > pointAttaqueMax) {
-            pa = pointAttaqueMax;
+        if (pa > POINTS_ATTAQUE_MAX) {
+            pa = POINTS_ATTAQUE_MAX;
         } else if (pa <= 0) {
-            pa = attaqueDefaut;
+            pa = POINTS_ATTAQUE_DEFAUT;
         }
 
         switch (type) {
