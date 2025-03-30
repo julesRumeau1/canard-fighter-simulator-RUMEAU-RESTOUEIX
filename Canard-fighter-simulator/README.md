@@ -35,7 +35,7 @@ Projet Canard Fighter Simulator (**RUMEAU** Jules & **RESTOUEIX** Emilien)
 
 #### Diagramme UML ####
 
-![Diagramme UML](Canard-fighter-simulator/diagramme.png)
+![Diagramme UML](diagramme.png)
 
 #### Description des choix technique ####
 1. **Utilisation de classes abstraites pour les canards**
