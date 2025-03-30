@@ -1,10 +1,12 @@
 package org.example;
 
 import org.example.bataille.Combat;
+import org.example.bataille.Joueur;
 import org.example.canard.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -50,18 +52,32 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Canard> listCanard = new ArrayList<>();
+        List<Joueur> listJoueur = new ArrayList<>();
+        Random random = new Random();
 
         while (true) {
             System.out.println("Bienvenue dans Canard Fighter Simulator !");
-            System.out.println("1. Créer un canard");
-            System.out.println("2. Lancer une bataille");
-            System.out.println("3. Quitter");
+            System.out.println("1. Créer un joueur");
+            System.out.println("2. Créer un canard");
+            System.out.println("3. Lancer une bataille");
+            System.out.println("4. Quitter");
             System.out.print("Votre choix : ");
             int choix = scanner.nextInt();
             scanner.nextLine(); // Consommer la ligne
 
             switch (choix) {
                 case 1:
+                    System.out.print("Nom du joueur : ");
+                    String nomJoueur = scanner.nextLine();
+
+                    int nbPotion = random.nextInt(6);
+                    System.out.println(nomJoueur + " aura " + nbPotion + " potion(s)");
+
+                    Joueur joueur = new Joueur(nomJoueur, nbPotion);
+                    listJoueur.add(joueur);
+                    break;
+
+                case 2:
                     System.out.print("Nom du canard : ");
                     String nom = scanner.nextLine();
                     System.out.println("Choisissez un type : 1. Eau, 2. Feu, 3. Glace, 4. Vent");
@@ -80,15 +96,15 @@ public class Main {
                     listCanard.add(canard);
                     System.out.println("Canard créé avec succès !");
                     break;
-                case 2:
+                case 3:
                     if (listCanard.size() < 2) {
                         System.out.println("Il faut au moins deux canards pour combattre !");
                     } else {
-                        Combat combat = new Combat(scanner, listCanard);
+                        Combat combat = new Combat(scanner, listJoueur, listCanard);
                         combat.demarrer();
                     }
                     break;
-                case 3:
+                case 4:
                     System.out.println("Merci d'avoir joué !");
                     scanner.close();
                     return;
