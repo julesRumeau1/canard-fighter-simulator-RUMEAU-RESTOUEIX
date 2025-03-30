@@ -6,13 +6,43 @@ import org.example.canard.Statut;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Représente un combat entre deux canards de deux joueurs.
+ * Le combat se déroule tour par tour où chaque joueur peut utiliser une potion et attaquer l'autre canard.
+ */
 public class Combat {
+    /**
+     * Le canard du joueur 1.
+     */
     private Canard canard1;
+
+    /**
+     * Le canard du joueur 2.
+     */
     private Canard canard2;
+
+    /**
+     * L'objet Scanner utilisé pour la saisie de l'utilisateur.
+     */
     private Scanner scanner;
+
+    /**
+     * Le joueur 1.
+     */
     private Joueur joueur1;
+
+    /**
+     * Le joueur 2.
+     */
     private Joueur joueur2;
 
+    /**
+     * Constructeur pour initialiser le combat avec les informations des joueurs et des canards.
+     *
+     * @param scanner L'objet Scanner utilisé pour la saisie de l'utilisateur.
+     * @param joueurs La liste des joueurs participants.
+     * @param canards La liste des canards disponibles pour le combat.
+     */
     public Combat(Scanner scanner, List<Joueur> joueurs, List<Canard> canards) {
         this.scanner = scanner;
 
@@ -44,9 +74,12 @@ public class Combat {
         this.canard1 = canards.get(index1);
         this.canard2 = canards.get(index2);
         scanner.nextLine();
-
     }
 
+    /**
+     * Démarre le combat entre les deux canards.
+     * Le combat continue tant que l'un des canards n'est pas K.O.
+     */
     public void demarrer() {
         this.scanner = scanner;
 
@@ -82,12 +115,16 @@ public class Combat {
             System.out.println(canard2.getNom() + " est K.O ! " + canard1.getNom() + " gagne !");
             canard1.genererBonus();
         }
-
-
     }
-    
-    private void tourJoueur(Joueur joueur, Canard canardAttaquant, Canard canardDefenseur) {
 
+    /**
+     * Effectue le tour d'un joueur, où il peut utiliser une potion et attaquer l'autre canard.
+     *
+     * @param joueur Le joueur qui effectue son tour.
+     * @param canardAttaquant Le canard attaquant du joueur.
+     * @param canardDefenseur Le canard défenseur du joueur adverse.
+     */
+    private void tourJoueur(Joueur joueur, Canard canardAttaquant, Canard canardDefenseur) {
         if (joueur.getPotions() > 0) {
             System.out.println(joueur.getNom() + " veux-tu utiliser une potion ?");
             String reponse = scanner.nextLine().toLowerCase();
@@ -98,7 +135,14 @@ public class Combat {
         attaque(joueur, canardAttaquant, canardDefenseur);
     }
 
-
+    /**
+     * Effectue l'attaque d'un canard contre un autre.
+     * Si le canard attaquant est gelé, il ne peut pas attaquer.
+     *
+     * @param joueur Le joueur qui effectue l'attaque.
+     * @param attanquant Le canard attaquant.
+     * @param cible Le canard cible de l'attaque.
+     */
     private void attaque(Joueur joueur, Canard attanquant, Canard cible) {
         if (attanquant.estGele()) {
             attanquant.statut = Statut.NORMAL;
@@ -111,6 +155,5 @@ public class Combat {
 
         Tour tour = new Tour(attanquant, cible, scanner);
         tour.executer(joueur);
-
     }
 }
