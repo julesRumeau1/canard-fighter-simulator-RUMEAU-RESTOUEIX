@@ -8,6 +8,9 @@ public class CapaciteRafale implements CapaciteSpeciale {
     public void activer(Canard utilisateur, Canard cible) {
         System.out.println(utilisateur.getNom() + " devient plus rapide et attaque plus souvent !");
         utilisateur.setStatut(Statut.VITESSE_AUGMENTEE);
-        utilisateur.setCapaciteSpecial(false);
+        utilisateur.setCapaciteSpecialDisponible(false);
+    }
+    public String getLibelle() {
+        return "Rafale";
     }
 }

@@ -2,6 +2,7 @@ package org.example.bataille;
 
 import org.example.canard.Canard;
 import org.example.canard.Statut;
+import org.example.capaciteSpeciale.CapaciteSpeciale;
 
 import java.util.Scanner;
 
@@ -25,7 +26,11 @@ public class Tour {
             System.out.println("Voulez-vous utiliser une capacité spéciale ? (oui/non)");
             String reponse = scanner.nextLine().toLowerCase();
             if (reponse.equals("oui")) {
-                attaquant.activerCapaciteSpeciale(defenseur);
+
+                //TODO choix capa spé
+
+                int indexCapaciteSpeciale = choixCapaciteSpeciale(attaquant);
+                attaquant.activerCapaciteSpeciale(defenseur, indexCapaciteSpeciale);
             }
         }
         if (attaquant.statut == Statut.BOOST_ATTAQUE) {
@@ -37,5 +42,25 @@ public class Tour {
         }
         attaquant.statut = Statut.NORMAL;
 
+    }
+
+    private int choixCapaciteSpeciale(Canard attaquant) {
+        System.out.println("Sélectionnez une capacité spéciale :");
+
+        int i = 1;
+        for (CapaciteSpeciale capaciteSpeciale: attaquant.getCapacitesSpeciales()) {
+            System.out.println(i + ". " + capaciteSpeciale.getLibelle());
+            i++;
+        }
+
+        int index = scanner.nextInt() - 1;
+        try {
+            attaquant.getCapaciteSpeciale(index);
+        } catch (Exception e) {
+            System.out.println("Une erreur est survenue veuillez réessayer");
+            choixCapaciteSpeciale(attaquant);
+        }
+        scanner.nextLine(); // vider le buffer après nextInt()
+        return index;
     }
 }

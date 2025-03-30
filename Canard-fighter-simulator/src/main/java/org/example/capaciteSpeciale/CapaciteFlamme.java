@@ -8,6 +8,9 @@ public class CapaciteFlamme implements CapaciteSpeciale {
     public void activer(Canard utilisateur, Canard cible) {
         System.out.println(utilisateur.getNom() + " s'embrase et inflige des dégâts supplémentaires !");
         utilisateur.setStatut(Statut.AUGMENTATION_DEGATS);
-        utilisateur.setCapaciteSpecial(false);
+        utilisateur.setCapaciteSpecialDisponible(false);
+    }
+    public String getLibelle() {
+        return "Flamme";
     }
 }
