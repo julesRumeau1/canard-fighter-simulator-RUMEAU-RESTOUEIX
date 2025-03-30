@@ -99,6 +99,8 @@ public class Main {
                 case 3:
                     if (listCanard.size() < 2) {
                         System.out.println("Il faut au moins deux canards pour combattre !");
+                    } else if (listJoueur.size() < 2) {
+                        System.out.println("Il faut au moins deux joueurs pour combattre !");
                     } else {
                         Combat combat = new Combat(scanner, listJoueur, listCanard);
                         combat.demarrer();
