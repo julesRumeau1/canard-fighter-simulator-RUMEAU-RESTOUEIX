@@ -33,11 +33,11 @@ Projet Canard Fighter Simulator (**RUMEAU** Jules & **RESTOUEIX** Emilien)
 
 ## 6 Livrables attendus ##
 
-- diagramme uml
-![Diagramme UML](/diagramme.png)
+#### Diagramme UML ####
 
+![Diagramme UML](Canard-fighter-simulator/diagramme.png)
 
-- description des choix technique
+#### Description des choix technique ####
 1. **Utilisation de classes abstraites pour les canards**
    Nous avons choisi de rendre la classe Canard abstraite car nous ne souhaitons pas l'instancier directement.
    Les différentes sous-classes (par exemple, CanardEau, CanardFeu, etc.) hériteront de cette classe abstraite pour bénéficier des comportements communs,
@@ -89,6 +89,6 @@ Projet Canard Fighter Simulator (**RUMEAU** Jules & **RESTOUEIX** Emilien)
 
 
 
--  liste des réalisations bonus :
+#### Liste des réalisations bonus  #### 
 
 Partie 5.3 du sujet "Personnalisation et progression"
