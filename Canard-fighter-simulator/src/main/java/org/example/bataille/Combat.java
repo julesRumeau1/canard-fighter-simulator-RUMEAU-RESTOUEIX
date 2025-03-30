@@ -13,9 +13,11 @@ public class Combat {
 
     public Combat(Scanner scanner, List<Canard> canards) {
         this.scanner = scanner;
-        System.out.println("Sélectionnez les deux canards combattants :");
+        System.out.println("Sélectionnez les numéros des deux canards combattants :");
         for (int i = 0; i < canards.size(); i++) {
-            System.out.println((i + 1) + ". " + canards.get(i).getNom() + "(" + canards.get(i).getType() + ")");
+            System.out.println((i + 1) + ". " + canards.get(i).getNom() +
+                    " (" + canards.get(i).getType() + ", " + canards.get(i).getPointsDeVie() +
+                    "HP , " + canards.get(i).getPointsAttaque() + "PA)");
         }
         System.out.print("Canard 1 : ");
         int index1 = scanner.nextInt() - 1;
